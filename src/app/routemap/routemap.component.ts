@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {RouteMAP} from "./busmap";
+import { RouteMAP } from './busmap';
 import RouteMapMain = RouteMAP.RouteMapMain;
-import {RoutemapService} from "./routemap.service";
-import * as L from "leaflet";
+import { RoutemapService } from './routemap.service';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-routemap',
@@ -10,18 +10,14 @@ import * as L from "leaflet";
   styleUrls: ['./routemap.component.scss']
 })
 export class RoutemapComponent implements OnInit {
-  constructor(private routeMAPservice:RoutemapService) {
-  }
+  constructor(private routeMAPservice: RoutemapService) {}
   ngOnInit() {
-    this.routeMAPservice.routeMap.f_busmap("div_leaflet")
-
-
+    this.routeMAPservice.routeMap.f_busmap('div_leaflet');
   }
-  public makeNewStation(){
+  public makeNewStation() {
     this.routeMAPservice.makeNewStation();
   }
-  public onContextMenu(e:MouseEvent){
+  public onContextMenu(e: MouseEvent) {
     this.routeMAPservice.prepareNewStation(e);
   }
-
 }

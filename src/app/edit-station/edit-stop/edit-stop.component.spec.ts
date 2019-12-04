@@ -8,9 +8,8 @@ describe('EditStopComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditStopComponent ]
-    })
-    .compileComponents();
+      declarations: [EditStopComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

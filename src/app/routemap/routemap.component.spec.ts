@@ -8,9 +8,8 @@ describe('RoutemapComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoutemapComponent ]
-    })
-    .compileComponents();
+      declarations: [RoutemapComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
-import { Component, OnInit,Input } from '@angular/core';
-import {JPTI} from "../../../lib/JPTI/JPTI";
+import { Component, OnInit, Input } from '@angular/core';
+import { JPTI } from '../../../lib/JPTI/JPTI';
 import Stop = JPTI.Stop;
 @Component({
   selector: 'app-edit-stop',
@@ -7,17 +7,15 @@ import Stop = JPTI.Stop;
   styleUrls: ['./edit-stop.component.scss']
 })
 export class EditStopComponent implements OnInit {
-  @Input() stop:Stop;
-  constructor() { }
+  @Input() stop: Stop;
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  public deleteStop(){
+  public deleteStop() {
     this.stop.station.deleteStop(this.stop);
   }
-  public addStop(){
+  public addStop() {
     this.stop.station.addNewStopAt(this.stop.station.stops.indexOf(this.stop));
   }
-
 }

@@ -1,66 +1,84 @@
 <div class="station">
-    <div class="main-right">
-        <div *ngIf="station==null" id="stationIsNull">
-            駅が選択されていません。
-        </div>
-        <div *ngIf="station!=null" id="editStation">
-            <h2 id="stationName">{{station.name}} 駅の編集</h2>
-            <div>
-                <div>
-                    <label>駅ID:
-                        <input type="text"  disabled [value]="station.id"/>
-                    </label>
-                </div>
-
-                <div>
-                    <label>駅名:
-                        <input type="text" [(ngModel)]="station.name" placeholder="name"/>
-                    </label>
-                </div>
-                <div>
-                    <label>駅タイプ:
-                        <select [(ngModel)]="station.type">
-                            <option value="0">鉄道駅</option>
-                            <option value="1">バス停</option>
-                            <option value="2">フェリー乗り場</option>
-                            <option value="3">空港</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <label>駅ナンバリング:
-                        <input type="text" [(ngModel)]="station.number" />
-                    </label>
-                </div>
-                <div>
-                    <label>駅説明:
-                        <input type="text" [(ngModel)]="station.description" />
-                    </label>
-                </div>
-                <div>
-                    <label>緯度(緯度):
-                        <input type="number" step="any" min="-90" max="90" [(ngModel)]="station.lat" />
-                    </label>
-                </div>
-                <div>
-                    <label>経度(東経):
-                        <input type="number" step="any" min="-180" max="180" [(ngModel)]="station.lon" />
-                    </label>
-                </div>
-            </div>
-            <h3>停留所の設定</h3>
-            <app-edit-stop *ngFor="let stop of station.stops" [stop]="stop"></app-edit-stop>
-            <br/>
-            <button (click)="addNewStop()">番線追加</button>
-        </div>
+  <div class="main-right">
+    <div *ngIf="station == null" id="stationIsNull">
+      駅が選択されていません。
     </div>
+    <div *ngIf="station != null" id="editStation">
+      <h2 id="stationName">{{ station.name }} 駅の編集</h2>
+      <div>
+        <div>
+          <label
+            >駅ID:
+            <input type="text" disabled [value]="station.id" />
+          </label>
+        </div>
+
+        <div>
+          <label
+            >駅名:
+            <input type="text" [(ngModel)]="station.name" placeholder="name" />
+          </label>
+        </div>
+        <div>
+          <label
+            >駅タイプ:
+            <select [(ngModel)]="station.type">
+              <option value="0">鉄道駅</option>
+              <option value="1">バス停</option>
+              <option value="2">フェリー乗り場</option>
+              <option value="3">空港</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label
+            >駅ナンバリング:
+            <input type="text" [(ngModel)]="station.number" />
+          </label>
+        </div>
+        <div>
+          <label
+            >駅説明:
+            <input type="text" [(ngModel)]="station.description" />
+          </label>
+        </div>
+        <div>
+          <label
+            >緯度(緯度):
+            <input
+              type="number"
+              step="any"
+              min="-90"
+              max="90"
+              [(ngModel)]="station.lat"
+            />
+          </label>
+        </div>
+        <div>
+          <label
+            >経度(東経):
+            <input
+              type="number"
+              step="any"
+              min="-180"
+              max="180"
+              [(ngModel)]="station.lon"
+            />
+          </label>
+        </div>
+      </div>
+      <h3>停留所の設定</h3>
+      <app-edit-stop
+        *ngFor="let stop of station.stops"
+        [stop]="stop"
+      ></app-edit-stop>
+      <br />
+      <button (click)="addNewStop()">番線追加</button>
+    </div>
+  </div>
 </div>
 <div>
-    <h3>開発者メモ</h3>
+  <h3>開発者メモ</h3>
   駅名を変更してもMAP側で反映されない。
   新規駅作成しても駅名が出るだけで、駅の●が出ない。（これはrouteの所属していない駅は●が表示されないことが問題)
-
-
 </div>
-
-

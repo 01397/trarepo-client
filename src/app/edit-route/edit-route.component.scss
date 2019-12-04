@@ -1,5 +1,3 @@
-
-
 //駅リスト
 .fs-station-railmap {
   cursor: pointer;
@@ -28,11 +26,11 @@
 //}
 
 .fs-station-railmap g:hover .fs-railmap-station {
-  fill:#a852ff;
+  fill: #a852ff;
 }
 
 .fs-station-railmap g:hover circle {
-  stroke:#a852ff;
+  stroke: #a852ff;
 }
 
 .fs-station-railmap g.fs-railmap-main:hover circle {
@@ -42,7 +40,6 @@
 .fs-station-railmap g:hover .fs-railmap-tracks {
   fill: #a852ff;
 }
-
 
 .fs-railmap-circle {
   fill: #ffffff;

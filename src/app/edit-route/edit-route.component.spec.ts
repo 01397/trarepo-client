@@ -8,17 +8,15 @@ describe('EditRouteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditRouteComponent ]
-    })
-    .compileComponents();
+      declarations: [EditRouteComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
-    describe('テスト',() => {
-      beforeEach(() =>{
+    describe('テスト', () => {
+      beforeEach(() => {
         //初期化処理
       });
-
     });
     fixture = TestBed.createComponent(EditRouteComponent);
     component = fixture.componentInstance;
