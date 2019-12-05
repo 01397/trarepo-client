@@ -79,10 +79,10 @@ export class RoutemapService {
         '&zoomLevel=10',
       'json'
     );
-    for (var stationID in this.showStations) {
+    for (const stationID in this.showStations) {
       delete this.showStations[stationID];
     }
-    for (let stationID in jptiData.stations) {
+    for (const stationID in jptiData.stations) {
       if (stationID in this.stationService.cacheStation) {
       } else {
         this.stationService.cacheStation[stationID] =
@@ -90,10 +90,10 @@ export class RoutemapService {
       }
     }
 
-    for (var routeID in this.showRoutes) {
+    for (const routeID in this.showRoutes) {
       delete this.showRoutes[routeID];
     }
-    for (let routeID in jptiData.routes) {
+    for (const routeID in jptiData.routes) {
       if (routeID in this.routeService.cacheRoute) {
       } else {
         this.routeService.cacheRoute[routeID] = jptiData.routes[routeID];
@@ -102,7 +102,7 @@ export class RoutemapService {
       route.jptiRoute = this.routeService.cacheRoute[routeID];
       this.showRoutes[routeID] = route;
       for (
-        var stationIndex = 0;
+        let stationIndex = 0;
         stationIndex < route.jptiRoute.routeStations.length;
         stationIndex++
       ) {
@@ -143,24 +143,27 @@ export class RoutemapService {
   }
 
   public dismissMenu() {
-    var menu = document.getElementById('mapMenu');
+    const menu = document.getElementById('mapMenu');
     menu.style.display = 'none';
   }
   //MAPを右クリックされたら、新規駅を作る準備(座標の登録)
   public prepareNewStation(e: MouseEvent) {
     console.log('click');
-    var menu = document.getElementById('mapMenu');
+    const menu = document.getElementById('mapMenu');
     console.log(menu);
-    menu.style.display = 'block';
-    var origin = this.routeMap.leafletMap.getPixelOrigin();
-    console.log(origin);
-    var posX = e.offsetX;
-    var posY = e.offsetY;
-    console.log(posX + ',' + posY);
     menu.style.left = e.clientX + 'px';
     menu.style.top = e.clientY + 'px';
-    var pointXY = L.point(posX, posY);
-    var pointlatlng = this.routeMap.leafletMap.mouseEventToLatLng(e);
+    menu.style.display = 'block';
+    /*
+      使ってなさそうだったので一旦コメントアウト
+      const origin = this.routeMap.leafletMap.getPixelOrigin();
+      console.log(origin);
+      const posX = e.offsetX;
+      const posY = e.offsetY;
+      console.log(posX + ',' + posY);
+      const pointXY = L.point(posX, posY);
+    */
+    const pointlatlng = this.routeMap.leafletMap.mouseEventToLatLng(e);
     console.log(pointlatlng);
     this.newStationLat = pointlatlng['lat'];
     this.newStationLon = pointlatlng['lng'];

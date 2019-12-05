@@ -44,7 +44,7 @@ export class RouteService {
   //サーバーからrouteを取得する。
   private loadRoute(routeID: string): Promise<Route> {
     return new Promise<Route>((resolve, reject) => {
-      var req = new XMLHttpRequest();
+      const req = new XMLHttpRequest();
       req.onreadystatechange = () => {
         if (req.readyState == 4 && req.status == 200) {
           console.log(req.response);
@@ -72,7 +72,7 @@ export class RouteService {
 
   //非推奨関数
   public setRouteByName(routeName: string) {
-    var req = new XMLHttpRequest();
+    const req = new XMLHttpRequest();
     req.onreadystatechange = () => {
       if (req.readyState == 4 && req.status == 200) {
         const route = new Route();

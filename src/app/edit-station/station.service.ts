@@ -9,26 +9,34 @@ import { RoutemapService } from '../routemap/routemap.service';
   providedIn: 'root'
 })
 export class StationService {
-  //キャッシュとして保存している駅
+  /**
+   * キャッシュとして保存している駅
+   */
   public cacheStation: { [key: string]: Station } = {};
 
-  //今編集する駅
+  /**
+   * 今編集する駅
+   */
   private nowStation: BehaviorSubject<Station> = new BehaviorSubject(null);
 
-  //相互に注入することを防ぐために、routemapは後から設定する。
+  /**
+   * 相互に注入することを防ぐために、routemapは後から設定する。
+   */
   private routemapService: RoutemapService;
 
-  //routemap側から呼び出すこと
+  /**
+   * routemap側から呼び出すこと
+   */
   public setRouteMapService(routeMapService: RoutemapService) {
     this.routemapService = routeMapService;
   }
 
   constructor() {
-    var req = new XMLHttpRequest();
+    const req = new XMLHttpRequest();
     req.onreadystatechange = () => {
       if (req.readyState == 4 && req.status == 200) {
         const responce = JSON.parse(req.response);
-        for (var id in responce) {
+        for (const id in responce) {
           this.addStation(responce[id]);
         }
       }
@@ -47,11 +55,11 @@ export class StationService {
 
   private loadStation(stationID: string): Promise<Station> {
     return new Promise<Station>(resolve => {
-      var req = new XMLHttpRequest();
+      const req = new XMLHttpRequest();
       req.onreadystatechange = () => {
         if (req.readyState == 4 && req.status == 200) {
           const responce = JSON.parse(req.response)['station'];
-          for (var id in responce) {
+          for (const id in responce) {
             this.addStation(responce[id]);
           }
         }
@@ -84,11 +92,11 @@ export class StationService {
     minLon: number,
     maxLon: number
   ) {
-    var req = new XMLHttpRequest();
+    const req = new XMLHttpRequest();
     req.onreadystatechange = () => {
       if (req.readyState == 4 && req.status == 200) {
         const responce = JSON.parse(req.response)['station'];
-        for (var id in responce) {
+        for (const id in responce) {
           this.addStation(responce[id]);
         }
       }

@@ -153,7 +153,7 @@ export namespace JPTI {
       this.name = value['name'];
       this.color = value['color'];
       this.routeStations == [];
-      for (var i = 0; i < value['stationList'].length; i++) {
+      for (let i = 0; i < value['stationList'].length; i++) {
         const routeStation = new RouteStation();
         routeStation.stationID = value['stationList'][i];
         this.routeStations.push(routeStation);
