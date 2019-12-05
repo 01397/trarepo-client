@@ -8,7 +8,7 @@ describe('EditRouteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditRouteComponent]
+      declarations: [EditRouteComponent],
     }).compileComponents();
   }));
 

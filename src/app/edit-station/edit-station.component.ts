@@ -8,7 +8,7 @@ declare const setStopCallback: any;
 @Component({
   selector: 'app-edit-station',
   templateUrl: './edit-station.component.html',
-  styleUrls: ['./edit-station.component.scss']
+  styleUrls: ['./edit-station.component.scss'],
 })
 export class EditStationComponent implements OnInit {
   /**

@@ -9,7 +9,7 @@ import Station = JPTI.Station;
 @Component({
   selector: 'app-edit-route',
   templateUrl: './edit-route.component.html',
-  styleUrls: ['./edit-route.component.scss']
+  styleUrls: ['./edit-route.component.scss'],
 })
 export class EditRouteComponent implements OnInit {
   //今編集するroute

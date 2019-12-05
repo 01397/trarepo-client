@@ -7,7 +7,7 @@ import { RoutemapService } from '../routemap/routemap.service';
 import { JPTIapi, KLAPI } from '../routemap/f_xhr_get';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RouteService {
   //キャッシュしたrouteのリスト。ここにあるrouteは基本的にAPIを読みにいかない。

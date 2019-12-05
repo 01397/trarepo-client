@@ -16,16 +16,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditStationComponent,
     EditStopComponent,
     EditRouteComponent,
-    RoutemapComponent
+    RoutemapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatTabsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

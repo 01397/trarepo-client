@@ -6,7 +6,7 @@ import Station = JPTI.Station;
 import Stop = JPTI.Stop;
 import { RoutemapService } from '../routemap/routemap.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StationService {
   /**

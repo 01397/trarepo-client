@@ -8,7 +8,7 @@ describe('EditStopComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditStopComponent]
+      declarations: [EditStopComponent],
     }).compileComponents();
   }));
 

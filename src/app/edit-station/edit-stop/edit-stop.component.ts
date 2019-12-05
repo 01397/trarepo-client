@@ -4,7 +4,7 @@ import Stop = JPTI.Stop;
 @Component({
   selector: 'app-edit-stop',
   templateUrl: './edit-stop.component.html',
-  styleUrls: ['./edit-stop.component.scss']
+  styleUrls: ['./edit-stop.component.scss'],
 })
 export class EditStopComponent implements OnInit {
   @Input() stop: Stop;

@@ -67,7 +67,7 @@ function f_offset_3(segmentList: Segment[]) {
     new Point(
       (c_v0z * c_v0y) / c_v0n + segmentList[0].sx,
       (-1 * c_v0z * c_v0x) / c_v0n + segmentList[0].sy
-    )
+    ),
   ];
   //終点
   segmentList[segmentList.length - 1].et = 1;
@@ -83,7 +83,7 @@ function f_offset_3(segmentList: Segment[]) {
     new Point(
       (c_vnz * c_vny) / c_vnn + segmentList[segmentList.length - 1].ex,
       (-1 * c_vnz * c_vnx) / c_vnn + segmentList[segmentList.length - 1].ey
-    )
+    ),
   ];
   //途中
   for (let i1 = 0; i1 < segmentList.length - 1; i1++) {

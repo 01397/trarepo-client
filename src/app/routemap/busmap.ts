@@ -8,7 +8,7 @@ import {
   Map,
   LatLngBounds,
   Marker,
-  bounds
+  bounds,
 } from 'leaflet';
 import { f_lon_to_x, f_lat_to_y, f_x_to_lon, f_y_to_lat } from './lonlat_xy';
 import { f_offset_segment_array } from './f_offset_segment_array';
@@ -19,7 +19,7 @@ import {
   Segment,
   SegmentList,
   StationXY,
-  SubSegment
+  SubSegment,
 } from './a_hanyou';
 import { JPTI } from '../../lib/JPTI/JPTI';
 import JPTIroute = JPTI.Route;
@@ -121,12 +121,12 @@ export namespace RouteMAP {
       this.leafletMap = L.map(divID, {
         center: [35, 135],
         zoom: 12,
-        doubleClickZoom: false
+        doubleClickZoom: false,
       });
       L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
         attribution:
           '<a href="https://maps.gsi.go.jp/development/ichiran.html">地理院タイル</a>',
-        opacity: 0.25
+        opacity: 0.25,
       }).addTo(this.leafletMap); //背景地図（地理院地図等）を表示する。
       L.svg().addTo(this.leafletMap); //svg地図を入れる。
       // this.leafletMap.setView([36, 135], 10); //初期表示位置
@@ -184,7 +184,7 @@ export namespace RouteMAP {
           {
             color: this.routes[routeID].jptiRoute.color,
             weight: 5,
-            opacity: 0.5
+            opacity: 0.5,
           }
         )
           .addTo(this.routeLayer)
@@ -202,7 +202,7 @@ export namespace RouteMAP {
               fillOpacity: 1,
               radius: 2.5,
               weight: 0.5,
-              opacity: 1
+              opacity: 1,
             })
               .addTo(this.stationMarkLayer)
               .on('click', () => {
@@ -224,8 +224,8 @@ export namespace RouteMAP {
               html: this.stations[stationID].jptiStation.name,
               className: 'className',
               iconSize: [50, 16],
-              iconAnchor: [-4, -4]
-            })
+              iconAnchor: [-4, -4],
+            }),
           }
         )
           .addTo(this.stationNameLayer)
@@ -407,11 +407,11 @@ export namespace RouteMAP {
             c_polylines[routeID].push(polyLine);
             if (segmentList[0].sxy.length === 3) {
               c_polylines[routeID][c_polylines[routeID].length - 2].ids = [
-                segmentList[0].sid
+                segmentList[0].sid,
               ];
             } else {
               c_polylines[routeID][c_polylines[routeID].length - 1].ids = [
-                segmentList[0].sid
+                segmentList[0].sid,
               ];
             }
           }
@@ -423,11 +423,11 @@ export namespace RouteMAP {
               c_polylines[routeID].push(polyline);
               if (segmentList[i2].exy.length === 3) {
                 c_polylines[routeID][c_polylines[routeID].length - 2].ids = [
-                  segmentList[i2].eid
+                  segmentList[i2].eid,
                 ];
               } else {
                 c_polylines[routeID][c_polylines[routeID].length - 1].ids = [
-                  segmentList[i2].eid
+                  segmentList[i2].eid,
                 ];
               }
             }

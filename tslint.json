@@ -1,5 +1,20 @@
 {
+  "extends": ["tslint-plugin-prettier", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["/node_modules"]
+  },
   "rules": {
+    "prettier": [
+      true,
+      {
+        "printWidth": 80,
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5",
+        "useTabs": false
+      }
+    ],
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -8,28 +23,12 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
-    "directive-selector": [
-      true,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "component-selector": [true, "element", "app", "kebab-case"],
+    "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,
-    "max-line-length": [
-      false,
-      140
-    ],
+    "max-line-length": [false, 140],
     "member-access": false,
     "member-ordering": [
       false,
@@ -43,25 +42,14 @@
       }
     ],
     "no-consecutive-blank-lines": false,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
     "no-var-requires": false,
-    "object-literal-key-quotes": [
-      false,
-      "always"
-
-    ],
+    "object-literal-key-quotes": [false, "always"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "trailing-comma": false,
@@ -78,7 +66,5 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true
   },
-  "rulesDirectory": [
-    "codelyzer"
-  ]
+  "rulesDirectory": ["tslint-plugin-prettier", "codelyzer"]
 }

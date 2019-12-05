@@ -7,7 +7,7 @@ import * as L from 'leaflet';
 @Component({
   selector: 'app-routemap',
   templateUrl: './routemap.component.html',
-  styleUrls: ['./routemap.component.scss']
+  styleUrls: ['./routemap.component.scss'],
 })
 export class RoutemapComponent implements OnInit {
   constructor(private routeMAPservice: RoutemapService) {}

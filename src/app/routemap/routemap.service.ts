@@ -12,7 +12,7 @@ import { JPTI } from '../../lib/JPTI/JPTI';
 import * as L from 'leaflet';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoutemapService {
   //表示するMAP
