@@ -48,15 +48,11 @@ export namespace RouteMAP {
         this.latMin < leafletBounds.getSouth() &&
         this.latMax > leafletBounds.getNorth() &&
         this.lngMin < leafletBounds.getWest() &&
-        this.lngMax > leafletBounds.getEast()
-      ) {
-        if (
-          this.latMax - this.latMin >
+        this.lngMax > leafletBounds.getEast() &&
+        this.latMax - this.latMin <=
           6 * (leafletBounds.getNorth() - leafletBounds.getSouth())
-        ) {
-        } else {
-          return false;
-        }
+      ) {
+        return false;
       }
       console.log('変更する');
       this.latMin = 2 * leafletBounds.getSouth() - leafletBounds.getNorth();
@@ -68,10 +64,8 @@ export namespace RouteMAP {
   }
   export class Route {
     public jptiRoute: JPTIroute;
-
     public polylines: Polyline = null;
     public latlngs: LatLng[] = [];
-
     public segmentList: Segment[] = [];
     //駅の数だけある
     public l_points: CircleMarker[] = [];
@@ -85,7 +79,6 @@ export namespace RouteMAP {
     get lon() {
       return this.jptiStation.lon;
     }
-
     public x: number;
     public y: number;
     public nameMarker: Marker;
@@ -94,7 +87,7 @@ export namespace RouteMAP {
     public leafletMap: Map;
     private mapBound: MapBound = new MapBound();
 
-    //オブジェクト表示れレイヤー
+    // オブジェクト表示レイヤー
     private stationNameLayer = L.featureGroup();
     private stationMarkLayer = L.featureGroup();
     private routeLayer = L.featureGroup();
@@ -143,8 +136,8 @@ export namespace RouteMAP {
     //MAP上のオブジェクトを消去する
     //RouteやStationに生成したオブジェクトを記録しているので、これを用いてMAPのオブジェクトを削除する
     public clearMap() {
-      const time = new Date().getTime();
-      for (let routeID in this.routes) {
+      const time = performance.now();
+      for (const routeID in this.routes) {
         try {
           this.routeLayer.removeLayer(this.routes[routeID].polylines);
           for (
@@ -161,24 +154,22 @@ export namespace RouteMAP {
           console.log(this.routes[routeID]);
         }
       }
-      for (let stationID in this.stations) {
+      for (const stationID in this.stations) {
         this.stationNameLayer.removeLayer(this.stations[stationID].nameMarker);
       }
-      console.log('clearMap:' + (new Date().getTime() - time));
+      console.log('clearMap:' + (performance.now() - time));
     }
     //MAP上にオブジェクトを生成する。
     //この関数を何回も走らせると、どんどんオブジェクトが増えていき、Route,Stationに記録しているMAPのオブジェクトが上書きされるため、過去のMAPオブジェクトを消すことができなくなる。
     public init() {
-      const startTime = new Date().getTime();
+      const startTime = performance.now();
       //色々調整
       this.f_offset_polyline();
-      console.log(
-        'end f_offset_polyline:' + (new Date().getTime() - startTime)
-      );
+      console.log('end f_offset_polyline:' + (performance.now() - startTime));
 
       //leafletで表示
       //線
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         this.routes[routeID].polylines = L.polyline(
           this.routes[routeID].latlngs,
           {
@@ -216,7 +207,7 @@ export namespace RouteMAP {
       }
       //駅
       //駅名
-      for (let stationID in this.stations) {
+      for (const stationID in this.stations) {
         this.stations[stationID].nameMarker = L.marker(
           [this.stations[stationID].lat, this.stations[stationID].lon],
           {
@@ -232,14 +223,14 @@ export namespace RouteMAP {
           .on('click', () => this.stationClicked(stationID));
       }
       this.f_zoom();
-      console.log('end zoom:' + (new Date().getTime() - startTime));
+      console.log('end zoom:' + (performance.now() - startTime));
     }
     //ズームした時の処理
     private f_zoom() {
       this.zoomLevel = this.leafletMap.getZoom();
       this.f_offset_polyline();
       //線
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         const route: Route = this.routes[routeID];
         route.polylines.setLatLngs(route.latlngs);
         //駅
@@ -263,7 +254,7 @@ export namespace RouteMAP {
     private f_offset_polyline() {
       //a_zoom_ratioは今のところ無効
 
-      for (let stationID in this.stations) {
+      for (const stationID in this.stations) {
         //緯度経度をxy（仮にEPSG:3857）に変換しておく
         this.stations[stationID].x = f_lon_to_x(
           this.stations[stationID].lon,
@@ -276,7 +267,7 @@ export namespace RouteMAP {
       }
       //折れ線の線分の列c_segment_arraysを作る
       //keyはrouteID
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         this.routes[routeID].segmentList = [];
         for (
           let stationIndex = 0;
@@ -310,7 +301,7 @@ export namespace RouteMAP {
       //keyはsegmentのsidとeidの組み合わせ
       const c_segments: { [key: string]: SegmentList } = {};
 
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         for (
           let stationIndex = 0;
           stationIndex < this.routes[routeID].segmentList.length;
@@ -351,9 +342,9 @@ export namespace RouteMAP {
         }
       }
       //オフセット幅zを設定
-      for (let segSetKey in c_segments) {
+      for (const segSetKey in c_segments) {
         let l_z = -1 * (c_segments[segSetKey].number - 1) * 0.5;
-        for (let i2 in c_segments[segSetKey].segments) {
+        for (const i2 in c_segments[segSetKey].segments) {
           if (i2 !== 'number') {
             if (c_segments[segSetKey].segments[i2].direction === 1) {
               c_segments[segSetKey].segments[i2].z = l_z * this.offsetSize;
@@ -366,7 +357,7 @@ export namespace RouteMAP {
       }
 
       //オフセット幅zをc_segment_arraysに入れる
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         for (
           let segmentIndex = 0;
           segmentIndex < this.routes[routeID].segmentList.length;
@@ -394,7 +385,7 @@ export namespace RouteMAP {
       }
       //オフセットした線を作る
       const c_polylines: { [key: string]: PolyLine[] } = {};
-      for (let routeID in this.routes) {
+      for (const routeID in this.routes) {
         const segmentList = this.routes[routeID].segmentList;
         if (segmentList.length > 0) {
           f_offset_segment_array(this.routes[routeID]);
