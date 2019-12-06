@@ -1,0 +1,38 @@
+<div class="station">
+  <div class="main-right">
+    <div *ngIf="service == null" id="serviceIsNull">
+      系統が選択されていません。
+    </div>
+    <div *ngIf="service != null" id="editStation">
+      <h2 id="stationName">{{ service.name }} 系統の編集</h2>
+      <div>
+        <div>
+          <label
+            >系統ID:
+            <input type="text" disabled [value]="service.id" />
+          </label>
+        </div>
+
+        <div>
+          <label
+            >系統名:
+            <input type="text" [(ngModel)]="service.name" placeholder="name" />
+          </label>
+        </div>
+        <div>
+          <label
+            >系統説明:
+            <input type="text" [(ngModel)]="service.description" />
+          </label>
+        </div>
+        <h3>路線の設定</h3>
+        <!-- 系統に所属する路線の編集欄 -->
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>開発者メモ</h3>
+    駅名を変更してもMAP側で反映されない。
+    新規駅作成しても駅名が出るだけで、駅の●が出ない。（これはrouteの所属していない駅は●が表示されないことが問題)
+  </div>
+</div>

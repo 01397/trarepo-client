@@ -10,6 +10,7 @@ import { EditRouteComponent } from './edit-route/edit-route.component';
 import { RoutemapComponent } from './routemap/routemap.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditSeviceComponent } from './edit-sevice/edit-sevice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditStopComponent,
     EditRouteComponent,
     RoutemapComponent,
+    EditSeviceComponent,
   ],
   imports: [
     BrowserModule,
