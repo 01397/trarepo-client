@@ -25,8 +25,7 @@ export class RouteService {
   }
 
   public async getRoute(routeID: string): Promise<Route> {
-    if (routeID in this.cacheRoute) {
-    } else {
+    if (!(routeID in this.cacheRoute)) {
       await this.loadRoute(routeID);
     }
     return this.cacheRoute[routeID];

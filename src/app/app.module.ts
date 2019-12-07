@@ -9,6 +9,7 @@ import { EditStopComponent } from './edit-station/edit-stop/edit-stop.component'
 import { EditRouteComponent } from './edit-route/edit-route.component';
 import { RoutemapComponent } from './routemap/routemap.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditSeviceComponent } from './edit-sevice/edit-sevice.component';
 @NgModule({
@@ -25,6 +26,7 @@ import { EditSeviceComponent } from './edit-sevice/edit-sevice.component';
     AppRoutingModule,
     FormsModule,
     MatTabsModule,
+    MatExpansionModule,
     BrowserAnimationsModule,
   ],
   providers: [],

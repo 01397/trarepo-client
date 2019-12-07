@@ -2,6 +2,9 @@
   <div class="main-right">
     <div *ngIf="service == null" id="serviceIsNull">
       系統が選択されていません。
+      <div>
+        <button (click)="makeNewService()">系統の新規作成</button>
+      </div>
     </div>
     <div *ngIf="service != null" id="editStation">
       <h2 id="stationName">{{ service.name }} 系統の編集</h2>
@@ -25,14 +28,38 @@
             <input type="text" [(ngModel)]="service.description" />
           </label>
         </div>
-        <h3>路線の設定</h3>
+        <div>
+          <button (click)="deleteService()">系統の削除</button>
+        </div>
+        <div>
+          <button (click)="makeNewService()">系統の新規作成</button>
+        </div>
+        <h3>系統の設定</h3>
         <!-- 系統に所属する路線の編集欄 -->
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let lineSystem of service.routes">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ lineSystem.route.name }}
+              </mat-panel-title>
+              <mat-panel-description>
+                走行区間
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p *ngFor="let station of lineSystem.route.routeStations">
+              {{ stationNameList[station.stationID] || '?' }}
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <div *ngIf="!visibleSelectOnMap">
+          <button (click)="enableSelectingRouteOnMap()">地図から選択</button>
+        </div>
+        <div *ngIf="visibleSelectOnMap">
+          地図から選択してください
+          <button (click)="disableSelectingRouteOnMap()">完了</button>
+        </div>
       </div>
     </div>
   </div>
-  <div>
-    <h3>開発者メモ</h3>
-    駅名を変更してもMAP側で反映されない。
-    新規駅作成しても駅名が出るだけで、駅の●が出ない。（これはrouteの所属していない駅は●が表示されないことが問題)
-  </div>
+  <div></div>
 </div>

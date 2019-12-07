@@ -15,10 +15,10 @@ export class EditRouteComponent implements OnInit {
   //今編集するroute
   public route: Route = null;
   //編集routeの駅データ
-  private stationData: Array<StationData> = [];
+  public stationData: Array<StationData> = [];
 
   //これがtrueの時、駅追加の＋マークが出現する。
-  private showInsertStation = false;
+  public showInsertStation = false;
 
   //これがtrueの時、駅追加の＋マークはマウスに連動して動く。
   //falseの時は＋マークは固定

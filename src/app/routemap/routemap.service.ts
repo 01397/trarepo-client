@@ -3,9 +3,11 @@ import { RouteMAP } from './busmap';
 import RouteMapMain = RouteMAP.RouteMapMain;
 import { RouteService } from '../edit-route/route.service';
 import { StationService } from '../edit-station/station.service';
+import { ServiceService } from '../edit-sevice/service.service';
 import { MatTabChangeEvent } from '@angular/material';
 import Route = RouteMAP.Route;
 import Station = RouteMAP.Station;
+import Service = RouteMAP.Station;
 import { f_xhr_get } from './f_xhr_get';
 import MapBound = RouteMAP.MapBound;
 import { JPTI } from '../../lib/JPTI/JPTI';
@@ -31,19 +33,26 @@ export class RoutemapService {
   public onFocusRouteEdit: boolean = false;
   //今　駅編集のタブを開いているかどうか？
   public onFocusStationEdit: boolean = true;
+  //今　系統編集のタブを開いているかどうか？
+  public onFocusServiceEdit: boolean = true;
 
   constructor(
     private routeService: RouteService,
-    private stationService: StationService
+    private stationService: StationService,
+    private serviceService: ServiceService
   ) {
     this.routeService.setRouteMapService(this);
     this.stationService.setRouteMapService(this);
+    this.serviceService.setRouteMapService(this);
 
     this.routeMap = new RouteMapMain(this, this.showRoutes, this.showStations);
     //routeMapのイベント処理
     this.routeMap.setRouteClickedListener((routeID: string) => {
       if (this.onFocusRouteEdit) {
         this.routeService.setRouteByID(routeID);
+      }
+      if (this.onFocusServiceEdit) {
+        this.serviceService.onSelectRoute(routeID);
       }
     });
     this.routeMap.setStationClickedListener((stationID: string) => {
@@ -57,16 +66,9 @@ export class RoutemapService {
   }
   //駅・路線などのタブレイアウトが変更された時
   public onTabChange(event: MatTabChangeEvent) {
-    if (event.index == 0) {
-      //駅編集
-      this.onFocusStationEdit = true;
-      this.onFocusRouteEdit = false;
-    }
-    if (event.index == 1) {
-      //路線編集
-      this.onFocusStationEdit = false;
-      this.onFocusRouteEdit = true;
-    }
+    this.onFocusStationEdit = event.index == 0;
+    this.onFocusRouteEdit = event.index == 1;
+    this.onFocusServiceEdit = event.index == 2;
   }
 
   //kamelong.comのAPIを使うときの処理
@@ -135,6 +137,7 @@ export class RoutemapService {
     this.showStations[stationID] = station;
     this.routeMap.init();
   }
+  public changeService(serviceId: string) {}
   //新規駅作成
   //先にprepareNewStationを使って、lat lon を用意しておくこと
   public makeNewStation() {
