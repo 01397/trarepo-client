@@ -1,16 +1,19 @@
-.main {
+main {
   display: flex;
   width: 100%;
+  flex: 1;
 }
 .main-left {
   display: block;
-  width: calc(100% - 500px);
-  height: 800px;
+  flex: 1;
 }
 .main-right {
   display: block;
-  width: 500px;
-  padding-left: 50px;
-  overflow: auto;
-  height: 800px;
+  width: 512px;
+  overflow: hidden;
+  height: 100%;
+  background-color: #fafafa;
+}
+.mat-tab-body-content {
+  padding: 8px;
 }

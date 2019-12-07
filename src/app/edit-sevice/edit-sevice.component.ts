@@ -34,7 +34,6 @@ export class EditSeviceComponent implements OnInit {
     });
     this.serviceService.getCurrentServiceObservable().subscribe(service => {
       this.service = service;
-      console.log("hhh");
       this.updateStationList();
     });
     this.updateStationList();

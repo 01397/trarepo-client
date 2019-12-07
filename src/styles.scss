@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', 'Helvetica Neue', sans-serif;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+$custom-typography: mat-typography-config(
+  $font-family: "'Noto Sans JP','sans-serif'",
+);
+
+@include mat-core($custom-typography);

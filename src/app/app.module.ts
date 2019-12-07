@@ -10,8 +10,11 @@ import { EditRouteComponent } from './edit-route/edit-route.component';
 import { RoutemapComponent } from './routemap/routemap.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditSeviceComponent } from './edit-sevice/edit-sevice.component';
+import { RangeSliderModule } from './range-slider/range-slider.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,10 @@ import { EditSeviceComponent } from './edit-sevice/edit-sevice.component';
     FormsModule,
     MatTabsModule,
     MatExpansionModule,
+    MatToolbarModule,
+    MatListModule,
     BrowserAnimationsModule,
+    RangeSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

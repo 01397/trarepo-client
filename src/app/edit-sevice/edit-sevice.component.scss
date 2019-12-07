@@ -1,0 +1,17 @@
+.stationList-container {
+  display: flex;
+}
+.stationList-slider {
+  width: 32px;
+}
+.stationList-list {
+  flex: 1;
+}
+.stationList-item {
+  height: 16px;
+  line-height: 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

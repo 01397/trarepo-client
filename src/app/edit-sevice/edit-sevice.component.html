@@ -46,9 +46,14 @@
                 走行区間
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <p *ngFor="let station of lineSystem.route.routeStations">
-              {{ stationNameList[station.stationID] || '?' }}
-            </p>
+            <div class="stationList-container">
+              <app-range-slider class="stationList-slider" length="10" start="1" end="5"></app-range-slider>
+              <div class="stationList-label">
+                <div *ngFor="let station of lineSystem.route.routeStations">
+                  {{ stationNameList[station.stationID] || '?' }}
+                </div>
+              </div>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
         <div *ngIf="!visibleSelectOnMap">

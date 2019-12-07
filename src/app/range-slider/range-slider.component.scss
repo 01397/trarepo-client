@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+}
+.rail {
+  background-color: #888;
+  margin: 8px auto;
+  width: 2px;
+  height: calc(100% - 16px);
+}
+.slider-marker {
+  height: 16px;
+}
+.thumb {
+  border-radius: 100%;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* material theme適用したほうがよさそう、やり方わかんない*/
+  background-color: #ff0088;
+  box-shadow: -1px 1px 3px #00000088;
+}
