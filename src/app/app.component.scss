@@ -2,6 +2,8 @@ main {
   display: flex;
   width: 100%;
   flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 .main-left {
   display: block;
@@ -10,10 +12,13 @@ main {
 .main-right {
   display: block;
   width: 512px;
-  overflow: hidden;
+  overflow: scroll;
   height: 100%;
   background-color: #fafafa;
 }
 .mat-tab-body-content {
   padding: 8px;
+}
+.toolbar {
+  min-height: 64px;
 }
